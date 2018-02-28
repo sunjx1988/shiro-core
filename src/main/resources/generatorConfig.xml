@@ -36,50 +36,51 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
+
         <table tableName="sys_users"
         		domainObjectName="SysUsers"
-            	enableCountByExample="false"
-            	enableUpdateByExample="false"
-               	enableDeleteByExample="false"
+            	enableCountByExample="true"
+            	enableUpdateByExample="true"
+               	enableDeleteByExample="true"
                	enableSelectByExample="true"
-				enableSelectByPrimaryKey="false"
-               	enableDeleteByPrimaryKey="false"
-               	enableUpdateByPrimaryKey="false"
-              	selectByExampleQueryId="false" >
+				enableSelectByPrimaryKey="true"
+               	enableDeleteByPrimaryKey="true"
+               	enableUpdateByPrimaryKey="true"
+              	selectByExampleQueryId="true" >
 
         </table>
 
         <table tableName="sys_roles"
                domainObjectName="SysRoles"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
                enableSelectByExample="true"
-               enableSelectByPrimaryKey="false"
-               enableDeleteByPrimaryKey="false"
-               enableUpdateByPrimaryKey="false"
-               selectByExampleQueryId="false" >
+               enableSelectByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true"
+               selectByExampleQueryId="true" >
 
         </table>
 
         <table tableName="sys_permissions"
                domainObjectName="SysPermissions"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
                enableSelectByExample="true"
-               enableSelectByPrimaryKey="false"
-               enableDeleteByPrimaryKey="false"
-               enableUpdateByPrimaryKey="false"
-               selectByExampleQueryId="false" >
+               enableSelectByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true"
+               selectByExampleQueryId="true" >
 
         </table>
 
         <table tableName="sys_users_roles"
                domainObjectName="SysUsersRoles"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
                enableSelectByExample="true"
                enableSelectByPrimaryKey="false"
                enableDeleteByPrimaryKey="false"
@@ -90,9 +91,9 @@
 
         <table tableName="sys_roles_permissions"
                domainObjectName="SysRolesPermissions"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
                enableSelectByExample="true"
                enableSelectByPrimaryKey="false"
                enableDeleteByPrimaryKey="false"
