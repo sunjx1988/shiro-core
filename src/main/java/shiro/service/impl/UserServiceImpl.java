@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService {
     private SysUsersMapper sysUsersMapper;
 
     @Override
+    @Transactional
     public SysUsers createSysUsers(SysUsers sysUsers) {
         PasswordHelper.encryptPassword(sysUsers);
         sysUsersMapper.insert(sysUsers);
