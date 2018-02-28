@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"/>
+
+    <context id="my" targetRuntime="MyBatis3">
+        <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://jx.sun:3306/shiro"
+                        userId="root"
+                        password="000000"/>
+
+		<!-- entity -->
+        <javaModelGenerator targetPackage="shiro.entity" targetProject="D:\idea-workspace\shiro\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- mapper.xml -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="D:\idea-workspace\shiro\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- mapper.java -->
+        <javaClientGenerator targetPackage="shiro.mapper" targetProject="D:\idea-workspace\shiro\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="sys_users"
+        		domainObjectName="SysUsers"
+            	enableCountByExample="false"
+            	enableUpdateByExample="false"
+               	enableDeleteByExample="false"
+               	enableSelectByExample="true"
+				enableSelectByPrimaryKey="false"
+               	enableDeleteByPrimaryKey="false"
+               	enableUpdateByPrimaryKey="false"
+              	selectByExampleQueryId="false" >
+
+        </table>
+
+        <table tableName="sys_roles"
+               domainObjectName="SysRoles"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="true"
+               enableSelectByPrimaryKey="false"
+               enableDeleteByPrimaryKey="false"
+               enableUpdateByPrimaryKey="false"
+               selectByExampleQueryId="false" >
+
+        </table>
+
+        <table tableName="sys_permissions"
+               domainObjectName="SysPermissions"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="true"
+               enableSelectByPrimaryKey="false"
+               enableDeleteByPrimaryKey="false"
+               enableUpdateByPrimaryKey="false"
+               selectByExampleQueryId="false" >
+
+        </table>
+
+        <table tableName="sys_users_roles"
+               domainObjectName="SysUsersRoles"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="true"
+               enableSelectByPrimaryKey="false"
+               enableDeleteByPrimaryKey="false"
+               enableUpdateByPrimaryKey="false"
+               selectByExampleQueryId="false" >
+
+        </table>
+
+        <table tableName="sys_roles_permissions"
+               domainObjectName="SysRolesPermissions"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="true"
+               enableSelectByPrimaryKey="false"
+               enableDeleteByPrimaryKey="false"
+               enableUpdateByPrimaryKey="false"
+               selectByExampleQueryId="false" >
+
+        </table>
+
+    </context>
+</generatorConfiguration>
