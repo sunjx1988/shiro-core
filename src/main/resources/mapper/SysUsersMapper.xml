@@ -56,6 +56,9 @@
     </if>
   </select>
   <insert id="insert" parameterType="shiro.entity.SysUsers" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into sys_users (id, username, password, 
       salt, locked)
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 

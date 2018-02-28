@@ -1,5 +1,7 @@
 package shiro.entity;
 
+import java.util.Objects;
+
 public class SysUsers {
     private Long id;
 
@@ -39,6 +41,10 @@ public class SysUsers {
         return salt;
     }
 
+    public String getCredentialsSalt() {
+        return username + salt;
+    }
+
     public void setSalt(String salt) {
         this.salt = salt == null ? null : salt.trim();
     }
@@ -49,5 +55,29 @@ public class SysUsers {
 
     public void setLocked(Boolean locked) {
         this.locked = locked;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SysUsers sysUsers = (SysUsers) o;
+        return Objects.equals(id, sysUsers.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "SysUsers{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", locked=" + locked +
+                '}';
     }
 }

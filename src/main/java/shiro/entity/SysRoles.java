@@ -1,5 +1,7 @@
 package shiro.entity;
 
+import java.util.Objects;
+
 public class SysRoles {
     private Long id;
 
@@ -39,5 +41,28 @@ public class SysRoles {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SysRoles sysRoles = (SysRoles) o;
+        return Objects.equals(id, sysRoles.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "SysRoles{" +
+                "id=" + id +
+                ", role='" + role + '\'' +
+                ", description='" + description + '\'' +
+                ", available=" + available +
+                '}';
     }
 }
