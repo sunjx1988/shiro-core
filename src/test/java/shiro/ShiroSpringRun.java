@@ -1,5 +1,11 @@
-package shiro.service;
+package shiro;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +16,18 @@ import org.springframework.transaction.annotation.Transactional;
 import shiro.entity.SysPermissions;
 import shiro.entity.SysRoles;
 import shiro.entity.SysUsers;
+import shiro.service.PermissionService;
+import shiro.service.RoleService;
+import shiro.service.UserService;
 
 /**
- * Created by sunjx on 2018/2/28.
- * 如果是springJunit 如果需要事务机制生效 必须添加 @Transactional<br/>
- * 此处添加@Transactional后如果需要设置事务的方法没有设置事务，那么方法就不受事务的管理<br/>
- * 如果希望所有事务回滚必须添加@Rollback
+ * Created by sunjx on 2018/3/1.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-db.xml"})
+@ContextConfiguration(locations = {"classpath:spring-shiro.xml"})
 @Transactional
 @Rollback
-public class UserServiceRun {
+public class ShiroSpringRun {
 
     @Autowired
     UserService userService;
@@ -32,7 +38,7 @@ public class UserServiceRun {
     @Autowired
     PermissionService permissionService;
 
-    @Test
+    @Before
     public void createSysUsers(){
         String adminName = "sunjx";
         String employeeName = "zhang";
@@ -45,6 +51,23 @@ public class UserServiceRun {
 
         showAllRoleByUserName(employeeName);
         showAllPermissionByUserName(employeeName);
+
+    }
+
+    @Test
+    public void main(){
+
+        Subject subject = SecurityUtils.getSubject();
+        for (int i = 0; i < 10; i++) {
+            try {
+                subject.login(new UsernamePasswordToken("sunjx", "0000000"));
+            }catch (ExcessiveAttemptsException e ){
+                System.out.println("密码错误次数过多！！");
+                break;
+            }catch (AuthenticationException e) {
+                System.out.println("密码或用户名错误！！");
+            }
+        }
 
     }
 
@@ -135,5 +158,4 @@ public class UserServiceRun {
         System.out.println("新增用户: " + user);
         return user;
     }
-
 }

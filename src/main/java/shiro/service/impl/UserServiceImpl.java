@@ -16,8 +16,11 @@ import java.util.*;
 /**
  * Created by sunjx on 2018/2/28.
  */
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private PasswordHelper passwordHelper;
 
     @Autowired
     private CustomUsersMapper sysUsersMapper;
@@ -31,7 +34,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public SysUsers createSysUsers(SysUsers sysUsers) {
-        PasswordHelper.encryptPassword(sysUsers);
+        passwordHelper.encryptPassword(sysUsers);
         sysUsersMapper.insert(sysUsers);
         return sysUsers;
     }
@@ -41,7 +44,7 @@ public class UserServiceImpl implements UserService {
     public void changePassword(Long sysUsersId, String newPassword) {
         SysUsers user = sysUsersMapper.selectByPrimaryKey(sysUsersId);
         user.setPassword(newPassword);
-        PasswordHelper.encryptPassword(user);
+        passwordHelper.encryptPassword(user);
         sysUsersMapper.updateByPrimaryKey(user);
     }
 

@@ -9,13 +9,18 @@ import shiro.entity.SysUsers;
 /**
  * Created by sunjx on 2018/2/28.
  */
-public abstract class PasswordHelper {
-    private static final RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
+public class PasswordHelper {
 
-    private static final String algorithmName = "md5";
-    private static final int hashIterations = 2;
+    private RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
+    private String algorithmName = "md5";
+    private Integer hashIterations = 2;
 
-    public static void encryptPassword(SysUsers user) {
+    public PasswordHelper(String algorithmName, Integer hashIterations) {
+        this.algorithmName = algorithmName;
+        this.hashIterations = hashIterations;
+    }
+
+    public void encryptPassword(SysUsers user) {
 
         user.setSalt(randomNumberGenerator.nextBytes().toHex());
 
@@ -23,8 +28,9 @@ public abstract class PasswordHelper {
                 algorithmName,
                 user.getPassword(),
                 ByteSource.Util.bytes(user.getCredentialsSalt()),
-                hashIterations).toHex();
+                hashIterations).toString();
 
         user.setPassword(newPassword);
     }
+
 }
