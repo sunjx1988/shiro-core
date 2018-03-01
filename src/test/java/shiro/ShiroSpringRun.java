@@ -58,17 +58,11 @@ public class ShiroSpringRun {
     public void main(){
 
         Subject subject = SecurityUtils.getSubject();
-        for (int i = 0; i < 10; i++) {
-            try {
-                subject.login(new UsernamePasswordToken("sunjx", "0000000"));
-            }catch (ExcessiveAttemptsException e ){
-                System.out.println("密码错误次数过多！！");
-                break;
-            }catch (AuthenticationException e) {
-                System.out.println("密码或用户名错误！！");
-            }
-        }
+        subject.login(new UsernamePasswordToken("sunjx", "000000"));
 
+        if(subject.hasRole("admin")){
+            System.out.println(subject.getPrincipal()+"具有admin角色");
+        }
     }
 
     //创建admin
